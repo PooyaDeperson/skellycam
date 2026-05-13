@@ -6,6 +6,7 @@ import ValueSelector from '@/components/ui-components/ValueSelector';
 import ButtonSm from '@/components/ui-components/ButtonSm';
 import { useServer } from '@/services/server/ServerContextProvider';
 import { useTranslation } from 'react-i18next';
+import Tooltip from '@/components/ui-components/Tooltip';
 
 interface CameraSettings { columns: number | null; }
 
@@ -108,32 +109,39 @@ export const CamerasViewSettingsOverlay: React.FC<CamerasViewSettingsOverlayProp
         <div className="mode-header live-mode w-full reveal fadeIn active-tools-header br-1-1 gap-1 p-1 flex justify-content-space-between">
           <div className="all-actions-components flex flex-row">
             <div className="stream-actions-container flex flex-row gap-1">
-              <ButtonSm
-                text="Stream"
-                iconClass="stream-icon"
-                textColor="text-white"
-                onClick={() => {}}
-              />
+              <div className="stream-button-container pos-rel">
+                <ButtonSm
+                  text="Stream"
+                  iconClass="stream-icon"
+                  textColor="text-white"
+                  onClick={() => {}}
+                />
+                <Tooltip
+                  mode="normal"
+                  text={"No cameras connected.\nWaiting for camera streams..."}
+                  positionClass="pos-bottom"
+                />
+              </div>
               <button className="button icon-button" onClick="">
                 <span className="icon icon-size-16 pause-icon" />
               </button>
             </div>
-            <div className='configure-camera-action-container text-white text md text-align-left flex flex-row items-center gap-1'>
-                   <p className='text-nowrap items-center flex flex-row flex-inline gap-1 text-gray'><span className='tag'>5</span>Connected Cameras</p>
-                   
-                   <button className="button icon-button"
-                        onClick="">
-                        <span className="icon icon-size-16 scan-icon" />
-                    </button>
-                <ButtonSm
-                                text="Configure"
-                                className="dropdown"
-                                rightSideIcon = "dropdown"
-                                iconClass="settings-icon"
-                                textColor="text-white"
-                                onClick={() => {}} //add logic to open camera configuration modal
-                            />
+            <div className="configure-camera-action-container text-white text md text-align-left flex flex-row items-center gap-1">
+              <p className="text-nowrap items-center flex flex-row flex-inline gap-1 text-gray">
+                <span className="tag">5</span>Connected Cameras
+              </p>
 
+              <button className="button icon-button" onClick="">
+                <span className="icon icon-size-16 scan-icon" />
+              </button>
+              <ButtonSm
+                text="Configure"
+                className="dropdown"
+                rightSideIcon="dropdown"
+                iconClass="settings-icon"
+                textColor="text-white"
+                onClick={() => {}} //add logic to open camera configuration modal
+              />
             </div>
           </div>
           <div className="settings-overlay-trigger"></div>

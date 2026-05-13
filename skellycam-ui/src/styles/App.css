@@ -1164,7 +1164,44 @@ animation: fadeIn, scaleIn;
   max-width: 320px;
   text-align: center;
 }
+.tooltip-outer-container {
 
+  min-width: 220px;
+  max-width: 280px;
+  width: auto;
+  
+}
+/* LEFT */
+.tooltip-outer-container.pos-left {
+  top: 50%;
+  right: calc(100% + 8px);
+
+  transform: translateY(-50%);
+}
+
+/* RIGHT */
+.tooltip-outer-container.pos-right {
+  top: 50%;
+  left: calc(100% + 8px);
+
+  transform: translateY(-50%);
+}
+
+/* TOP */
+.tooltip-outer-container.pos-top {
+  bottom: calc(100% + 8px);
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+/* BOTTOM */
+.tooltip-outer-container.pos-bottom {
+  top: calc(100% + 8px);
+  left: 50%;
+
+  transform: translateX(-50%);
+}
 .toast-notification.success {
   border-color: var(--green-100);
 }
